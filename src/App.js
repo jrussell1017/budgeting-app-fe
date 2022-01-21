@@ -7,6 +7,7 @@ import Home from "./Pages/Home";
 
 // COMPONENTS
 import NavBar from "./Components/NavBar";
+import Index from "./Pages/Index";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/transactions" element={} />
+          <Route path="/transactions" element={<Index />} />
         </Routes>
       </main>
       </Router>
