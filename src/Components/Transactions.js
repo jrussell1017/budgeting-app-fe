@@ -29,9 +29,11 @@ function Transactions() {
     return <Transaction key={index} transaction={transaction} index={index} />;
   });
 
+  let accountTotal = transactions.map((transaction) => transaction.amount).reduce((a, b) => a + b, 0)
+
   return (
     <div className="Transactions">
-      <h1>Bank Account Total:</h1>
+      <h1>Bank Account Total: {accountTotal}</h1>
       <div>{allTransactions}</div>
     </div>
   );
