@@ -18,7 +18,7 @@ function Transactions() {
       .get(`${API}/transactions`)
       .then((res) => {
         console.log(res.data);
-        setTransactions(res.data)
+        setTransactions(res.data);
       })
       .catch((err) => {
         throw err;
@@ -29,12 +29,28 @@ function Transactions() {
     return <Transaction key={index} transaction={transaction} index={index} />;
   });
 
-  let accountTotal = transactions.map((transaction) => Number(transaction.amount)).reduce((a, b) => a + b, 0)
-  console.log(accountTotal)
+  let accountTotal = transactions
+    .map((transaction) => Number(transaction.amount))
+    .reduce((a, b) => a + b, 0);
+  console.log(accountTotal);
+
   return (
     <div className="Transactions">
-      <h1 id="bank-account-total">Bank Account Total: {Number(accountTotal)}</h1>
-      <div className="all-transactions-container">{allTransactions}</div>
+      <h1 id="bank-account-total">
+        Bank Account Total: {Number(accountTotal)}
+      </h1>
+      <section>
+        <table>
+          <thead>
+            <tr>
+              <th>Date:</th>
+              <th>Name:</th>
+              <th>Amount:</th>
+            </tr>
+          </thead>
+          <tbody>{allTransactions}</tbody>
+        </table>
+      </section>
     </div>
   );
 }
