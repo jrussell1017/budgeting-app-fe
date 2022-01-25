@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const API = process.env.REACT_APP_API_URL;
@@ -31,6 +31,17 @@ function EditTransactionForm() {
         navigate("/not-found");
       });
   };
+
+  useEffect(() => {
+    axios
+      .get(`${API}/transactions/${index}`)
+      .then((res) => {
+        setTransaction(res.data);
+      })
+      .catch(() => {
+        navigate("/not-found");
+      });
+  }, [index, navigate]);
 
   return (
     <div className="Edit">

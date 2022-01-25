@@ -29,12 +29,12 @@ function Transactions() {
     return <Transaction key={index} transaction={transaction} index={index} />;
   });
 
-  let accountTotal = transactions.map((transaction) => transaction.amount).reduce((a, b) => a + b, 0)
-
+  let accountTotal = transactions.map((transaction) => Number(transaction.amount)).reduce((a, b) => a + b, 0)
+  console.log(accountTotal)
   return (
     <div className="Transactions">
-      <h1>Bank Account Total: {accountTotal}</h1>
-      <div>{allTransactions}</div>
+      <h1 id="bank-account-total">Bank Account Total: {Number(accountTotal)}</h1>
+      <div className="all-transactions-container">{allTransactions}</div>
     </div>
   );
 }
