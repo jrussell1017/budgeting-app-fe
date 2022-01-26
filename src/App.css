@@ -1,14 +1,40 @@
-body {
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+  background-color: rgb(206, 250, 227);
+}
+
+.Index {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: mintcream;
+}
+
+footer {
     text-align: center;
     justify-content: center;
+    margin: 0 auto;
+    color: yellow;
+    background-color: rgb(93, 192, 93);
+    height: 100px;
 }
 
-.navbar {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+img {
+    width: 120px;
 }
 
+.negative-account {
+    color: red;
+}
 
+.positive-account {
+    color: green;
+}
 
-
-
+.neutral-account {
+    color: whitesmoke;
+    background-color: black;
+}

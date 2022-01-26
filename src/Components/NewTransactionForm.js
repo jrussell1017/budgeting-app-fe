@@ -43,6 +43,7 @@ function NewTransactionForm() {
           onChange={handleTextChange}
           placeholder="Date"
           type="text"
+          required
         />
         <br />
         <label htmlFor="name">Name: </label>
@@ -52,6 +53,7 @@ function NewTransactionForm() {
           onChange={handleTextChange}
           placeholder="Name"
           type="text"
+          required
         />
         <br />
         <label htmlFor="amount">Amount: </label>
@@ -61,6 +63,7 @@ function NewTransactionForm() {
           onChange={handleTextChange}
           placeholder="0"
           type="number"
+          required
         />
         <br />
         <label htmlFor="from">From: </label>
@@ -70,6 +73,7 @@ function NewTransactionForm() {
           onChange={handleTextChange}
           placeholder="From"
           type="text"
+          required
         />
         <br />
         <label htmlFor="category">Category: </label>
@@ -79,6 +83,7 @@ function NewTransactionForm() {
           onChange={handleTextChange}
           placeholder="Category"
           type="text"
+          required
         />
         <br />
         <br />

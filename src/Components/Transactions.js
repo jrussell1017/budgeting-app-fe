@@ -7,6 +7,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Transaction from "./Transaction";
+import { Table } from "react-bootstrap";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -30,17 +31,43 @@ function Transactions() {
   });
 
   let accountTotal = transactions
-    .map((transaction) => Number(transaction.amount))
-    .reduce((a, b) => a + b, 0);
-  console.log(accountTotal);
+    .map((transaction) => transaction.amount)
+    .reduce((a, b) => Number(a) + Number(b), 0);
+  
+  let colorChange = () => {
+    if(accountTotal < 0) {
+      return (
+        <h1 id="bank-account-total" className="negative-account">
+          Bank Account Total: {accountTotal}
+        </h1>
+      )
+    }
+    else if(accountTotal > 1000) {
+      return (
+        <h1 id="bank-account-total" className="positive-account">
+          Bank Account Total: {accountTotal}
+        </h1>
+      )
+    }
+    else {
+      return (
+        <h1 id="bank-account-total" className="neutral-account">
+          Bank Account Total: {accountTotal}
+        </h1>
+      )
+    }
+  }
+
+
 
   return (
     <div className="Transactions">
-      <h1 id="bank-account-total">
-        Bank Account Total: {Number(accountTotal)}
-      </h1>
+      <div className="transaction-headers">
+        <h2 id="transaction">Transactions Page</h2>
+        {colorChange()}
+      </div>
       <section>
-        <table>
+        <Table striped border="true" hover>
           <thead>
             <tr>
               <th>Date:</th>
@@ -49,7 +76,7 @@ function Transactions() {
             </tr>
           </thead>
           <tbody>{allTransactions}</tbody>
-        </table>
+        </Table>
       </section>
     </div>
   );

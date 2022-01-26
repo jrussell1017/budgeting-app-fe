@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import budgetLogo from "./budgetLogo.png"
 
-export default function NavBar() {
+
+
+export default function NavbarDisplay() {
   return (
-    <div id="navbar">
-      <h1>
-        <Link to="/transactions">Budget App</Link>
-      </h1>
-        <button id="new-transactions-button">
-          <Link to="/transactions/new">New Transaction</Link>
-        </button>
-    </div>
+    <nav className="NavBar">
+        <Link to="/transactions"><img src={budgetLogo}/></Link>
+      <Button variant="outline-success" size="sm" className="col-4" as={Link} to={"/transactions/new"}>
+        New Transaction
+      </Button>
+    </nav>
   );
 }

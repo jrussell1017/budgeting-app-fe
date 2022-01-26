@@ -20,18 +20,6 @@ function EditTransactionForm() {
     setTransaction({ ...transaction, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post(`${API}/transactions`, transaction)
-      .then((res) => {
-        setTransaction(res.data);
-      })
-      .catch((err) => {
-        navigate("/not-found");
-      });
-  };
-
   useEffect(() => {
     axios
       .get(`${API}/transactions/${index}`)
@@ -43,7 +31,21 @@ function EditTransactionForm() {
       });
   }, [index, navigate]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .put(`${API}/transactions/${index}`, transaction)
+      .then((res) => {
+        navigate(`/transactions`);
+      })
+      .catch((err) => {
+        navigate("/not-found");
+      });
+  };
+
+
   return (
+
     <div className="Edit">
       <form onSubmit={handleSubmit}>
         <label htmlFor="date">Date: </label>
@@ -53,6 +55,7 @@ function EditTransactionForm() {
           onChange={handleTextChange}
           placeholder="Date"
           type="text"
+          required
         />
         <br />
         <label htmlFor="name">Name: </label>
@@ -62,6 +65,7 @@ function EditTransactionForm() {
           onChange={handleTextChange}
           placeholder="Name"
           type="text"
+          required
         />
         <br />
         <label htmlFor="amount">Amount: </label>
@@ -71,6 +75,7 @@ function EditTransactionForm() {
           onChange={handleTextChange}
           placeholder="0"
           type="number"
+          required
         />
         <br />
         <label htmlFor="from">From: </label>
@@ -80,6 +85,7 @@ function EditTransactionForm() {
           onChange={handleTextChange}
           placeholder="From"
           type="text"
+          required
         />
         <br />
         <label htmlFor="category">Category: </label>
@@ -89,6 +95,7 @@ function EditTransactionForm() {
           onChange={handleTextChange}
           placeholder="Category"
           type="text"
+          required
         />
         <br />
         <br />
